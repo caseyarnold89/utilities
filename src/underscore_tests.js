@@ -31,16 +31,6 @@ var _ = { };
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
-      var newArr = [];
-      if (n != undefined) {
-          for (var i = ) {
-              newArr.unshift[i];
-          }
-      }
-      else {
-          newArr = array[array.length-1];
-      }
-      return newArr;
   };
   
   _.last([1,2,3], 2);
@@ -48,11 +38,15 @@ var _ = { };
   // Call iterator(value, key, collection) for each element of collection.
   // Accepts both arrays and objects.
   _.each = function(collection, iterator) {
+      for (var i in collection) {
+          iterator(collection[i],i,collection);
+      }
   };
 
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
   _.indexOf = function(array, target){
+      
   };
 
   // Return all elements of an array that pass a truth test.
