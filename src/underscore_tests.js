@@ -33,8 +33,8 @@ var _ = { };
   _.last = function(array, n) {
       var newArr = [];
       if (n != undefined) {
-          for (var i = array.length-1; i > array.length-n; i--) {
-              newArr.push[i];
+          for (var i = ) {
+              newArr.unshift[i];
           }
       }
       else {
