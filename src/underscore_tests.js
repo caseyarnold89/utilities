@@ -46,34 +46,67 @@ var _ = { };
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
   _.indexOf = function(array, target){
-      
+      var targetInd = array.indexOf(target);
+      return targetInd;
   };
 
   // Return all elements of an array that pass a truth test.
   _.filter = function(collection, iterator) {
+      var passArr = [];
+      for (var i = 0; i < collection.length; i++) {
+          if (iterator(collection[i]) == true) {
+              passArr.push(collection[i]);
+          }
+      }
+      return passArr;
   };
 
   // Return all elements of an array that don't pass a truth test.
   _.reject = function(collection, iterator) {
+      var failArr = [];
+      for (var i = 0; i <collection.length; i++) {
+          if (iterator(collection[i]) == false) {
+              failArr.push(collection[i]);
+          }
+      }
+      return failArr;
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+      var uniqArray = [];
+      for (var i = 0; i < array.length; i++) {
+          if (uniqArray.indexOf(array[i]) === -1) {
+              uniqArray.push(array[i]);
+          }
+      }
+      return uniqArray;
   };
 
 
   // Return the results of applying an iterator to each element.
   _.map = function(array, iterator) {
+      var mapArray = [];
+      for (var i = 0; i < array.length; i++) {
+          mapArray.push(iterator(array[i]));
+      }
+      return mapArray;
   };
 
   // Takes an array of objects and returns and array of the values of
   // a certain property in it. E.g. take an array of people and return
   // an array of just their ages
   _.pluck = function(array, propertyName) {
+      var pluckArray = [];
+      for (var i = 0; i < array.length; i++) {
+          pluckArray.push(array[i][propertyName]);
+      }
+      return pluckArray;
   };
 
   // Calls the method named by methodName on each value in the list.
   _.invoke = function(list, methodName, args) {
+      
   };
 
   // Reduces an array or object to a single value by repetitively calling
