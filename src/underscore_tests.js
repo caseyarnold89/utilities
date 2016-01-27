@@ -31,9 +31,18 @@ var _ = { };
   // Like first, but for the last elements. If n is undefined, return just the
   // last element.
   _.last = function(array, n) {
+      var newArr = [];
+      if (n != undefined) {
+          for (var i = array.length-1; i > -1 && i > array.length-1-n; i--) {
+              newArr.unshift(array[i]);
+          }
+      }
+      else {
+          newArr = array[array.length-1];
+      }
+      return newArr;
   };
   
-  _.last([1,2,3], 2);
 
   // Call iterator(value, key, collection) for each element of collection.
   // Accepts both arrays and objects.
@@ -46,7 +55,13 @@ var _ = { };
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
   _.indexOf = function(array, target){
-      var targetInd = array.indexOf(target);
+      var targetInd = -1;
+      for (var i = 0; i < array.length; i++) {
+          if (array[i] == target) {
+              targetInd = i;
+              return targetInd;
+          }
+      }
       return targetInd;
   };
 
@@ -107,7 +122,7 @@ var _ = { };
   // Calls the method named by methodName on each value in the list.
   _.invoke = function(list, methodName, args) {
       for (var i = 0; i < list.length; i++) {
-          methodName(list[i]);
+          
       }
   };
 
@@ -130,16 +145,44 @@ var _ = { };
 
   // Determine if the array or object contains a given value (using `===`).
   _.contains = function(collection, target) {
+      var flag = false;
+      for (var i in collection) {
+          if (collection[i] === target) {
+              flag = true;
+          }
+      }
+      return flag;
   };
 
 
   // Determine whether all of the elements match a truth test.
   _.every = function(collection, iterator) {
+      var flag = true;
+      if (iterator == undefined) {
+          for (var i = 0; i < collection.length; i++) {
+              if (collection[i] == null) {
+                  flag = false;
+              }
+          }
+      }
+      else if (iterator(collection) == null) {
+          flag = false;
+      }
+      return flag;
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.some = function(collection, iterator) {
+      var flag = true;
+      if (iterator != undefined) {
+          if(iterator(collection) == false) {
+              flag = false;
+          }
+      }
+      else {
+          
+      }
   };
 
 
