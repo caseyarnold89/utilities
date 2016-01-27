@@ -121,8 +121,10 @@ var _ = { };
 
   // Calls the method named by methodName on each value in the list.
   _.invoke = function(list, methodName, args) {
+      var newArray = [];
       for (var i = 0; i < list.length; i++) {
-          
+          newArray.push(list[methodName](list[i]));
+          return newArray[i];
       }
   };
 
