@@ -167,8 +167,8 @@ var _ = { };
   _.every = function(collection, iterator) {
       var flag = true;
       if (iterator == undefined) {
-          for (var i = 0; i < collection.length; i++) {
-              if (collection[i] == null) {
+          for (var i in collection) {
+              if (!collection[i]) {
                   flag = false;
               }
           }
@@ -204,6 +204,7 @@ var _ = { };
   // Extend a given object with all the properties of the passed in
   // object(s).
   _.extend = function(obj) {
+      
   };
 
   // Like extend, but doesn't ever overwrite a key that already
